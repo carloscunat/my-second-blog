@@ -3,9 +3,32 @@ from .models import Serie
 from django.utils import timezone
 from .forms import SerieForm
 
+
+
+def series_vistas():
+    series=Serie.objects.all()
+    count=0
+    for serie in series:
+        count+=1
+    return count
+
+def temporadas_vistas():
+    series=Serie.objects.all()
+    count=0
+    for serie in series:
+        count+=int(serie.temporadas)
+    return count
+def finalizados():
+    series=Serie.objects.all()
+    f=0
+    for serie in series:
+        if serie.finalizado == True:
+            f+=1
+    return f
 def series_list(request):
     series=Serie.objects.all()
-    return render(request, 'series/series_list.html', {'series':series})
+    info=[series_vistas(),temporadas_vistas(),finalizados()]
+    return render(request, 'series/series_list.html', {'series':series,'info':info})
 def serie_new(request):
     if request.method == "POST":
         form = SerieForm(request.POST)
