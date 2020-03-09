@@ -1,0 +1,54 @@
+{% extends 'series/base.html' %}
+{% block content %}
+<div class="total">
+<div class="pequeno">
+
+</div>
+
+<div class="left">
+  <div class="titulo2">
+    <div>
+      <h2>Serie</h2>
+    </div>
+  </div>
+  {% for serie in series %}
+  <div>
+    <div class="titulo">
+      <div class="post">
+        <h2><a href="{% url 'serie_edit' serie.serie %}">{{ serie.serie }}</a></h2>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="left">
+  <div class="titulo2">
+    <h2 >Temporadas</h2>
+  </div>
+  {% for serie in series %}
+  <div>
+    <div class="titulo">
+      <div class="post">
+        <h2>{{ serie.temporadas }}</h2>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="left">
+  <div class="titulo2">
+    <h2 >Finalizado</h2>
+  </div>
+  {% for serie in series %}
+  <div>
+    <div class="titulo">
+      <div class="post">
+        <h2>{{ serie.finalizado }}</h2>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
