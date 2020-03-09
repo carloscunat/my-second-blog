@@ -1,9 +1,6 @@
 {% extends 'series/base.html' %}
 {% block content %}
-<div class="total">
-<div class="pequeno">
-
-</div>
+<div class="total left">
 
 <div class="left">
   <div class="titulo2">
@@ -49,22 +46,21 @@
   </div>
   {% endfor %}
 </div>
-<div class="right">
-    <div class="titulo3">
+</div>
+<div class="left info">
+    <div class="titulo2">
       <h2 >Total</h2>
     </div>
-    <div class="titulo4">
+  <div class="titulo">
 
-      <h4>Vistas</h4>
-      <h4>{{info.0}}</h4>
-      <h4>Temporadas</h4>
-      <h4>{{info.1}}</h4>
-      <h4>Finalizadas</h4>
-      <h4>{{info.2}}</h4>
+      <h3>Vistas</h3>
+      <h3>{{info.0}}</h3>
+      <h3>Temporadas</h3>
+      <h3>{{info.1}}</h3>
+      <h3>Finalizadas</h3>
+      <h3>{{info.2}}</h3>
 
     </div>
-</div>
-</div>
-
+  </div>
 
 {% endblock %}

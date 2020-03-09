@@ -1,8 +1,10 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Serie
-from django.utils import timezone
+from datetime import date
 from .forms import SerieForm
 
+def series2020():
+    series=Serie.objects.all()
 
 
 def series_vistas():
@@ -27,6 +29,8 @@ def finalizados():
     return f
 def series_list(request):
     series=Serie.objects.all()
+
+
     info=[series_vistas(),temporadas_vistas(),finalizados()]
     return render(request, 'series/series_list.html', {'series':series,'info':info})
 def serie_new(request):
@@ -38,6 +42,7 @@ def serie_new(request):
 
             serie.save()
             return redirect('series_list')
+
     else:
         form = SerieForm()
     return render(request, 'series/serie_edit.html', {'form': form})

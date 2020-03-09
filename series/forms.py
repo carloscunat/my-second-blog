@@ -6,4 +6,4 @@ class SerieForm(forms.ModelForm):
 
     class Meta:
         model = Serie
-        fields = ('serie', 'temporadas','finalizado','visto')
+        fields = ('serie', 'temporadas','finalizado')
