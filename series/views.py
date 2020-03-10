@@ -66,13 +66,13 @@ def serie_new(request):
 
 
             serie.save()
-            return redirect('listas')
+            return redirect('/')
 
     else:
         form = SerieForm()
     return render(request, 'series/serie_edit.html', {'form': form})
-def serie_edit(request, serie):
-    serie2 = get_object_or_404(Serie,serie=serie)
+def serie_edit(request, serie,visto):
+    serie2 = get_object_or_404(Serie,serie=serie,visto=visto)
     if request.method == "POST":
         form = SerieForm(request.POST, instance=serie2)
         if form.is_valid():
@@ -80,11 +80,11 @@ def serie_edit(request, serie):
 
 
             serie2.save()
-            return redirect('listas')
+            return redirect('/')
     else:
         form = SerieForm(instance=serie2)
     return render(request, 'series/serie_edit.html', {'form': form})
-def serie_remove(request, serie):
-    serie2 = get_object_or_404(Serie, serie=serie)
+def serie_remove(request, serie,visto):
+    serie2 = get_object_or_404(Serie, serie=serie,visto=visto)
     serie2.delete()
-    return redirect('listas')
+    return redirect('/')
