@@ -5,17 +5,7 @@
     padding: 20px 20px 20px 40px;
 
 }
-.submenu h4,.submenu h4 a,.submenu h4 a:visited,.submenu h4 a:active{
-    font-family: 'Lobster', cursive;
-    color: #ffffff;
-    font-size: 10pt;
 
-}
-.submenu{
-    background-color: #C25100;
-    margin-top: 0;
-    padding: 20px 20px 20px 40px;
-}
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
