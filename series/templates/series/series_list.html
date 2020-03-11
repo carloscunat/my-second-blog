@@ -1,5 +1,6 @@
 {% extends 'series/base.html' %}
 {% block content %}
+
 <div class="total left">
 
 <div class="left">
@@ -19,12 +20,12 @@
   {% endfor %}
 </div>
 <div class="left">
-  <div class="titulo2">
+  <div class="titulo5">
     <h2 >Temporadas</h2>
   </div>
   {% for serie in series %}
   <div>
-    <div class="titulo">
+    <div class="titulo4">
       <div class="post">
         <h2>{{ serie.temporadas }}</h2>
       </div>
@@ -33,12 +34,12 @@
   {% endfor %}
 </div>
 <div class="left">
-  <div class="titulo2">
+  <div class="titulo5">
     <h2 >Finalizado</h2>
   </div>
   {% for serie in series %}
   <div>
-    <div class="titulo">
+    <div class="titulo4">
       <div class="post">
         <h2>{{ serie.finalizado }}</h2>
       </div>
@@ -46,12 +47,24 @@
   </div>
   {% endfor %}
 </div>
+<div class="left">
+  <div class="titulo5">
+    <h2 >Eliminar</h2>
+  </div>
+  {% for serie in series %}
+  <div>
+    <div class="titulo4">
+        <h2><a href="{% url 'serie_remove' serie.serie serie.visto %}">Borrar</a></h2>
+    </div>
+  </div>
+  {% endfor %}
 </div>
-<div class="left info">
-    <div class="titulo2">
+</div>
+<div class="info left">
+    <div class="titulo5">
       <h2 >Total</h2>
     </div>
-  <div class="titulo">
+  <div class="titulo4">
 
       <h3>Vistas</h3>
       <h3>{{info.0}}</h3>

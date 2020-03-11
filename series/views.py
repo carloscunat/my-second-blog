@@ -54,7 +54,8 @@ def series2018(request):
     info=[series_vistas(series2018),temporadas_vistas(series2018),finalizados(series2018)]
     return render(request, 'series/series_list.html', {'series':series2018,'info':info})
 def series_list(request):
-    series=Serie.objects.all()
+    series=Serie.objects.raw('SELECT id, serie,sum(temporadas),max(finalizado) FROM series_serie group BY serie order by serie;')
+
 
 
     info=[series_vistas(series),temporadas_vistas(series),finalizados(series)]
@@ -102,3 +103,5 @@ def RegisterView(request):
             return redirect('/')
 
     return render(request, "registration/register.html", {'form': form})
+def proximamente(request):
+    return render(request, 'series/proximamente.html')
