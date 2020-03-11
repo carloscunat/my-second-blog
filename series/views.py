@@ -2,7 +2,8 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Serie
 from datetime import date
 from .forms import SerieForm
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 
 def series_vistas(series):
@@ -58,6 +59,7 @@ def series_list(request):
 
     info=[series_vistas(series),temporadas_vistas(series),finalizados(series)]
     return render(request, 'series/series_list.html', {'series':series,'info':info})
+@login_required
 def serie_new(request):
     if request.method == "POST":
         form = SerieForm(request.POST)
@@ -71,6 +73,7 @@ def serie_new(request):
     else:
         form = SerieForm()
     return render(request, 'series/serie_edit.html', {'form': form})
+@login_required
 def serie_edit(request, serie,visto):
     serie2 = get_object_or_404(Serie,serie=serie,visto=visto)
     if request.method == "POST":
@@ -84,7 +87,18 @@ def serie_edit(request, serie,visto):
     else:
         form = SerieForm(instance=serie2)
     return render(request, 'series/serie_edit.html', {'form': form})
+@login_required
 def serie_remove(request, serie,visto):
     serie2 = get_object_or_404(Serie, serie=serie,visto=visto)
     serie2.delete()
     return redirect('/')
+def RegisterView(request):
+
+    form = UserCreationForm()
+    if request.method == "POST":
+        form = UserCreationForm(data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('/')
+
+    return render(request, "registration/register.html", {'form': form})

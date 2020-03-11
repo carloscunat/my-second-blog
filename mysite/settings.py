@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'series.apps.SeriesConfig',
-    
+    'calendario.apps.CalendarioConfig',
+
 
 
 ]
